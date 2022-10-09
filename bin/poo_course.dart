@@ -1,16 +1,18 @@
 void main() {
   String nome = "Otavio";
-  double peso = 74;
+  double peso = 68;
   int idade = 25;
   int tempoDeTreino = 2; // Em anos
-  bool podeCiclar = iniciarUmCiclo(tempoDeTreino);
+  bool podeCiclar = iniciarUmCiclo(tempoTreino: tempoDeTreino);
 
-  showCompetidor(nome, peso, idade, tempoDeTreino :tempoDeTreino);
+  showCompetidor(nome, peso, idade);
+
+  dieta(pesoMax: 90, pesoAtual: peso);
 
 
 }
 
-bool iniciarUmCiclo(int tempoTreino) {
+bool iniciarUmCiclo({required int tempoTreino}) {
   if(tempoTreino >= 3){
     print("Pode ciclar, pois treina há $tempoTreino anos.");
     return true;
@@ -20,9 +22,11 @@ bool iniciarUmCiclo(int tempoTreino) {
   }
 }
 
-void showCompetidor({required String nome, required double peso,required int idade,  int? tempoDeTreino})  {
-  print("NOME: $nome - PESO: $peso: - Idade $idade -");
-  if(tempoDeTreino != null) {
-    return print("$nome treina há $tempoDeTreino anos");
-  } 
+void showCompetidor(String nome, double peso, int idade)  {
+  print("NOME: $nome - PESO: $peso: - Idade $idade"); 
+}
+
+void dieta({required double pesoMax, required double pesoAtual}) {
+  double qntFalta = pesoMax - pesoAtual;
+  return print("Faltam $qntFalta Kg para chegar ao peso de $pesoMax Kg");
 }
